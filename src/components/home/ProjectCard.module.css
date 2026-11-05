@@ -136,8 +136,9 @@
 
 .arrow {
   color: var(--text-muted);
-  font-family: var(--font-pixel);
-  font-size: 0.8rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1;
   transition:
     color var(--transition-fast),
     transform var(--transition-fast);
@@ -180,6 +181,9 @@
 }
 
 .cta span {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  line-height: 1;
   transition: transform var(--transition-fast);
 }
 

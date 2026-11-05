@@ -122,11 +122,184 @@
   color: var(--text);
 }
 
+.projectsGroup {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.projectsLink {
+  padding-right: 3px;
+}
+
+.dropdownToggle {
+  display: grid;
+  width: 24px;
+  height: 34px;
+  place-items: center;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color var(--transition-fast);
+}
+
+.dropdownToggle:hover,
+.dropdownToggleOpen {
+  color: var(--accent);
+}
+
+.chevron {
+  display: block;
+  font-family: var(--font-pixel);
+  font-size: 0.6rem;
+  line-height: 1;
+  transition: transform var(--transition-fast);
+}
+
+.dropdownToggleOpen .chevron {
+  transform: rotate(180deg);
+}
+
+.projectsMenu {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  z-index: 130;
+  display: flex;
+  flex-direction: column;
+  width: min(316px, 80vw);
+  border: 1px solid var(--line-strong);
+  background: color-mix(in srgb, var(--bg) 97%, transparent);
+  box-shadow: var(--shadow-soft);
+  padding: 0.55rem;
+  backdrop-filter: blur(20px);
+  animation: project-menu-in 180ms ease both;
+}
+
+.projectsMenu[hidden] {
+  display: none;
+}
+
+.projectsMenuLabel {
+  padding: 0.35rem 0.5rem 0.6rem;
+  color: var(--text-muted);
+  font-family: var(--font-pixel);
+  font-size: 0.46rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.projectMenuLink {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  min-width: 0;
+  border: 1px solid transparent;
+  padding: 0.6rem 0.55rem;
+  color: var(--text);
+  transition:
+    border-color var(--transition-fast),
+    background-color var(--transition-fast);
+}
+
+.projectMenuLink:hover,
+.projectMenuLinkActive {
+  border-color: var(--line);
+  background: color-mix(in srgb, var(--surface) 64%, transparent);
+}
+
+.projectMenuLinkActive {
+  border-color: var(--line-strong);
+}
+
+.projectMenuSymbol {
+  display: grid;
+  flex: 0 0 auto;
+  width: 1.4rem;
+  height: 1.4rem;
+  place-items: center;
+  border: 1px solid color-mix(in srgb, currentColor 38%, transparent);
+}
+
+.projectMenuSymbol svg {
+  width: 60%;
+  height: 60%;
+  filter: drop-shadow(0 0 7px currentColor);
+}
+
+.projectMenuCopy {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+  gap: 2px;
+}
+
+.projectMenuTitle {
+  font-family: var(--font-pixel);
+  font-size: 0.56rem;
+  line-height: 1.35;
+}
+
+.projectMenuGenre {
+  overflow: hidden;
+  color: var(--text-muted);
+  font-size: 0.7rem;
+  line-height: 1.3;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.projectMenuIndex {
+  color: var(--text-muted);
+  font-family: var(--font-pixel);
+  font-size: 0.46rem;
+}
+
+.allProjectsLink {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.4rem;
+  border-top: 1px solid var(--line);
+  padding: 0.7rem 0.55rem 0.25rem;
+  color: var(--accent);
+  font-family: var(--font-pixel);
+  font-size: 0.5rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: color var(--transition-fast);
+}
+
+.allProjectsLink:hover {
+  color: var(--accent-secondary);
+}
+
+.allProjectsLink span {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  line-height: 1;
+}
+
 .context {
   flex: 0 0 auto;
   margin-left: 8px;
   border-left: 1px solid var(--line);
   padding-left: 20px;
+}
+
+@keyframes project-menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .contextLabel {
@@ -262,7 +435,104 @@
 
   .mobileArrow {
     color: var(--accent);
-    font-size: 0.8rem;
+    font-family: var(--font-body);
+    font-size: 0.92rem;
+    line-height: 1;
+  }
+
+  .mobileProjects {
+    width: min(100%, var(--container));
+    margin: 14px auto 0;
+    border-top: 1px solid var(--line);
+    padding-top: 14px;
+  }
+
+  .mobileProjectsLabel {
+    display: block;
+    padding-inline: 12px;
+    color: var(--text-muted);
+    font-family: var(--font-pixel);
+    font-size: 0.46rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .mobileProjectList {
+    display: grid;
+    gap: 3px;
+    margin-top: 8px;
+  }
+
+  .mobileProjectLink {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+    padding: 10px 12px;
+    color: var(--text-muted);
+    transition:
+      background-color var(--transition-fast),
+      border-color var(--transition-fast),
+      color var(--transition-fast);
+  }
+
+  .mobileProjectLink:hover,
+  .mobileProjectLinkActive {
+    border-color: var(--line);
+    background: color-mix(in srgb, var(--surface) 65%, transparent);
+    color: var(--text);
+  }
+
+  .mobileProjectLinkActive {
+    border-color: var(--line-strong);
+  }
+
+  .mobileProjectIndex {
+    color: var(--text-muted);
+    font-family: var(--font-pixel);
+    font-size: 0.46rem;
+  }
+
+  .mobileProjectSymbol {
+    display: grid;
+    flex: 0 0 auto;
+    width: 1.25rem;
+    height: 1.25rem;
+    place-items: center;
+    border: 1px solid color-mix(in srgb, currentColor 38%, transparent);
+  }
+
+  .mobileProjectSymbol svg {
+    width: 60%;
+    height: 60%;
+    filter: drop-shadow(0 0 6px currentColor);
+  }
+
+  .mobileProjectName {
+    font-family: var(--font-pixel);
+    font-size: 0.56rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+
+  .mobileAllProjects {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 9px;
+    padding: 8px 12px;
+    color: var(--accent);
+    font-family: var(--font-pixel);
+    font-size: 0.5rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .mobileAllProjects span {
+    font-family: var(--font-body);
+    font-size: 0.84rem;
+    line-height: 1;
   }
 
   .mobileContext {

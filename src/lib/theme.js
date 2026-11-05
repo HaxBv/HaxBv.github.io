@@ -8,6 +8,12 @@ const themeVariableMap = {
   textMuted: '--text-muted',
 };
 
+const displayFonts = {
+  pixel: 'var(--font-pixel)',
+  rounded: "ui-rounded, 'Trebuchet MS', 'Segoe UI', sans-serif",
+  serif: "'Palatino Linotype', 'Book Antiqua', Palatino, Georgia, serif",
+};
+
 export function themeToCssVars(theme) {
   const variables = {};
 
@@ -26,6 +32,11 @@ export function themeToCssVars(theme) {
   variables['--backdrop-image'] = theme.backdropImage
     ? `url("${theme.backdropImage}")`
     : 'none';
+  variables['--font-display'] = displayFonts[theme.displayFont] || displayFonts.pixel;
+  variables['--display-transform'] = theme.headingTransform || 'none';
+  variables['--display-letter-spacing'] = theme.headingLetterSpacing || 'normal';
+  variables['--accent-deep'] =
+    theme.accentDeep || `color-mix(in srgb, ${theme.accent} 72%, ${theme.background})`;
 
   return variables;
 }

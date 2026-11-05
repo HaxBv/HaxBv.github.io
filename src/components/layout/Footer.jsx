@@ -1,4 +1,5 @@
 import { site } from '../../data/site';
+import { scrollToTop } from '../../lib/motion';
 import { PixelSprite } from '../ui/PixelSprite';
 import styles from './Footer.module.css';
 
@@ -18,7 +19,7 @@ export function Footer() {
           <p>© {new Date().getFullYear()} {site.name}</p>
           <button
             className={styles.topButton}
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            onClick={scrollToTop}
             type="button"
           >
             Back to top <span aria-hidden="true">↑</span>

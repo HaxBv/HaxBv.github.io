@@ -5,6 +5,7 @@ const effectClasses = {
   embers: styles.embers,
   confetti: styles.confetti,
   arcane: styles.arcane,
+  ink: styles.ink,
   scanlines: styles.scanlines,
   vignette: styles.vignette,
 };

@@ -152,6 +152,35 @@
   animation: arcane-pulse 11s ease-in-out infinite reverse;
 }
 
+.ink::before,
+.ink::after {
+  position: absolute;
+  border-radius: 46% 54% 58% 42% / 52% 38% 62% 48%;
+  background:
+    radial-gradient(circle at 42% 38%, color-mix(in srgb, var(--accent-deep) 52%, transparent), transparent 62%),
+    radial-gradient(circle at 66% 62%, color-mix(in srgb, var(--accent) 18%, transparent), transparent 56%);
+  content: '';
+  filter: blur(26px);
+  opacity: 0.55;
+}
+
+.ink::before {
+  bottom: -12%;
+  left: -14%;
+  width: 55vw;
+  height: 40vw;
+  animation: ink-drift 22s ease-in-out infinite;
+}
+
+.ink::after {
+  top: -10%;
+  right: -12%;
+  width: 44vw;
+  height: 36vw;
+  opacity: 0.35;
+  animation: ink-drift 28s ease-in-out infinite reverse;
+}
+
 .decorations {
   position: absolute;
   inset: 0;
@@ -184,6 +213,12 @@
 
 .compact .decoration {
   filter: drop-shadow(0 0 8px color-mix(in srgb, currentColor 38%, transparent));
+}
+
+@media (max-width: 900px) {
+  .page .decorations {
+    display: none;
+  }
 }
 
 @keyframes backdrop-in {
@@ -226,5 +261,16 @@
   50% {
     opacity: 0.5;
     transform: scale(1.03);
+  }
+}
+
+@keyframes ink-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+  }
+
+  50% {
+    transform: translate3d(3%, -2%, 0) scale(1.06) rotate(2deg);
   }
 }

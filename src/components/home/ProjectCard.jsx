@@ -11,7 +11,7 @@ export function ProjectCard({ project, index }) {
   return (
     <article className={styles.card}>
       <Link
-        aria-label={`Open the ${project.title} project environment`}
+        aria-label={`Open the ${project.title} project page`}
         className={styles.link}
         to={`/projects/${project.slug}`}
       >
@@ -35,12 +35,10 @@ export function ProjectCard({ project, index }) {
           </div>
 
           <h3 className={styles.title}>{project.title}</h3>
-          <p className={styles.note}>
-            Theme preview is live. The full case study is still being built.
-          </p>
+          <p className={styles.note}>{project.tagline}</p>
 
           <span className={styles.cta}>
-            Enter environment <span aria-hidden="true">→</span>
+            Open project <span aria-hidden="true">→</span>
           </span>
         </div>
       </Link>

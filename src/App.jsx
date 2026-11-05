@@ -9,6 +9,7 @@ import {
 import { Footer } from './components/layout/Footer';
 import { Navbar } from './components/layout/Navbar';
 import { ScrollManager } from './components/layout/ScrollManager';
+import { ProjectArtworkStage } from './components/project/ProjectArtwork';
 import { ProjectBackdrop } from './components/project/ProjectBackdrop';
 import { getProjectBySlug } from './data/projects';
 import { siteTheme } from './data/site';
@@ -61,6 +62,7 @@ function AppShell() {
     <div className={styles.appShell} style={themeVariables}>
       <div aria-hidden="true" className={styles.ambient} />
       {project ? <ProjectBackdrop project={project} /> : null}
+      <ProjectArtworkStage project={project} />
 
       <a className={styles.skipLink} href="#main-content" onClick={handleSkipLink}>
         Skip to content

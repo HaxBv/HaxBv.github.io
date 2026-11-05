@@ -28,6 +28,10 @@
   --font-pixel: 'Silkscreen', 'Courier New', monospace;
   --font-body: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-mono: 'Cascadia Code', 'SFMono-Regular', Consolas, monospace;
+  --font-display: var(--font-pixel);
+  --display-transform: none;
+  --display-letter-spacing: normal;
+  --accent-deep: color-mix(in srgb, var(--accent) 72%, var(--bg));
   --container: 1180px;
   --nav-height: 76px;
   --radius-sm: 4px;

@@ -1,5 +1,22 @@
 .page {
   position: relative;
   z-index: 2;
-  padding-top: 28px;
+  padding-bottom: clamp(3.5rem, 8vw, 6rem);
+}
+
+.content {
+  width: min(calc(100% - 48px), 42vw, 760px);
+  margin-inline: auto;
+}
+
+@media (max-width: 1100px) {
+  .content {
+    width: min(calc(100% - 40px), 720px);
+  }
+}
+
+@media (max-width: 720px) {
+  .content {
+    width: calc(100% - 32px);
+  }
 }
