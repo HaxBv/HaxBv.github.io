@@ -1,0 +1,260 @@
+.hero {
+  padding-top: clamp(64px, 8vw, 108px);
+  padding-bottom: clamp(84px, 11vw, 148px);
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.04fr) minmax(380px, 0.96fr);
+  align-items: center;
+  gap: clamp(44px, 6vw, 88px);
+}
+
+.copy {
+  position: relative;
+  z-index: 1;
+}
+
+.title {
+  max-width: 900px;
+  margin-top: 22px;
+  font-family: var(--font-pixel);
+  font-size: clamp(2.2rem, 5.35vw, 4.5rem);
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  line-height: 1.06;
+  text-wrap: balance;
+}
+
+.title span {
+  color: var(--accent);
+  text-shadow: 0 0 34px var(--glow);
+}
+
+.lead {
+  max-width: 580px;
+  margin-top: 26px;
+  color: var(--text-muted);
+  font-size: clamp(1rem, 1.8vw, 1.18rem);
+  line-height: 1.75;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 34px;
+}
+
+.signals {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 24px;
+  margin-top: 42px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  list-style: none;
+  color: var(--text-muted);
+  font-family: var(--font-pixel);
+  font-size: 0.58rem;
+  letter-spacing: 0.03em;
+  line-height: 1.6;
+  text-transform: uppercase;
+}
+
+.signals li {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.signals span {
+  color: var(--accent-secondary);
+  font-size: 0.5rem;
+}
+
+.artWrap {
+  position: relative;
+  min-width: 0;
+}
+
+.artFrame {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--line-strong);
+  background:
+    linear-gradient(145deg, color-mix(in srgb, var(--accent) 8%, transparent), transparent 44%),
+    color-mix(in srgb, var(--surface) 58%, transparent);
+  box-shadow:
+    var(--shadow-soft),
+    inset 0 0 0 6px color-mix(in srgb, var(--bg) 35%, transparent);
+  padding: 18px;
+  transform: rotate(1.2deg);
+  transition:
+    transform var(--transition-slow),
+    border-color var(--transition-slow),
+    background-color var(--transition-slow);
+}
+
+.artFrame::before,
+.artFrame::after {
+  position: absolute;
+  z-index: 2;
+  width: 14px;
+  height: 14px;
+  border-color: var(--accent);
+  content: '';
+}
+
+.artFrame::before {
+  top: 8px;
+  left: 8px;
+  border-top: 2px solid;
+  border-left: 2px solid;
+}
+
+.artFrame::after {
+  right: 8px;
+  bottom: 8px;
+  border-right: 2px solid;
+  border-bottom: 2px solid;
+}
+
+.artWrap:hover .artFrame {
+  border-color: var(--accent);
+  transform: rotate(0deg) translateY(-4px);
+}
+
+.artHud,
+.artFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  color: var(--text-muted);
+  font-family: var(--font-pixel);
+  font-size: 0.52rem;
+  letter-spacing: 0.06em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.artHud {
+  padding-bottom: 12px;
+}
+
+.artHud span:last-child {
+  color: var(--accent-secondary);
+}
+
+.console {
+  display: block;
+  width: 100%;
+  filter: drop-shadow(0 22px 34px rgba(6, 4, 10, 0.4));
+}
+
+.artFooter {
+  padding-top: 12px;
+}
+
+.cursor {
+  color: var(--accent);
+  animation: blink 1.2s steps(1) infinite;
+}
+
+.floatingSprite {
+  position: absolute;
+  z-index: 3;
+  filter: drop-shadow(0 0 18px currentColor);
+  animation: float-soft 5s ease-in-out infinite;
+}
+
+.spriteOne {
+  top: -20px;
+  right: -18px;
+  width: 28px;
+  height: 28px;
+  color: var(--accent);
+}
+
+.spriteTwo {
+  bottom: 14%;
+  left: -24px;
+  width: 34px;
+  height: 34px;
+  color: var(--accent-secondary);
+  animation-delay: -1.8s;
+}
+
+.spriteThree {
+  right: -10px;
+  bottom: -14px;
+  width: 20px;
+  height: 20px;
+  color: var(--text-muted);
+  animation-delay: -3s;
+}
+
+.scanline {
+  animation: scanline-move 5s linear infinite;
+  opacity: 0.35;
+}
+
+@keyframes scanline-move {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(164px);
+  }
+}
+
+@media (max-width: 980px) {
+  .inner {
+    grid-template-columns: 1fr;
+    gap: 58px;
+  }
+
+  .copy {
+    max-width: 760px;
+  }
+
+  .artWrap {
+    width: min(100%, 620px);
+    margin-inline: auto;
+  }
+}
+
+@media (max-width: 560px) {
+  .title {
+    font-size: clamp(1.85rem, 9vw, 2.7rem);
+  }
+
+  .actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .signals {
+    gap: 8px 18px;
+    margin-top: 32px;
+  }
+
+  .artFrame {
+    padding: 12px;
+  }
+
+  .artHud,
+  .artFooter {
+    font-size: 0.48rem;
+  }
+
+  .spriteOne {
+    right: -2px;
+  }
+
+  .spriteTwo {
+    left: -10px;
+  }
+}

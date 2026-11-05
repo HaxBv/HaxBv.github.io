@@ -1,0 +1,203 @@
+.card {
+  min-width: 0;
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--surface) 58%, transparent);
+  box-shadow: 0 16px 40px color-mix(in srgb, #08060c 16%, transparent);
+  transition:
+    border-color var(--transition-base),
+    background-color var(--transition-base),
+    transform var(--transition-base),
+    box-shadow var(--transition-base);
+}
+
+.card:hover {
+  border-color: var(--line-strong);
+  box-shadow:
+    0 24px 54px color-mix(in srgb, #08060c 30%, transparent),
+    0 0 36px color-mix(in srgb, var(--accent) 12%, transparent);
+  transform: translateY(-6px);
+}
+
+.link {
+  display: block;
+  height: 100%;
+}
+
+.preview {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  border-bottom: 1px solid var(--line);
+  background: var(--bg);
+  isolation: isolate;
+}
+
+.preview::after {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, color-mix(in srgb, var(--bg) 58%, transparent), transparent 56%);
+  content: '';
+  pointer-events: none;
+}
+
+.number {
+  position: absolute;
+  top: 14px;
+  left: 16px;
+  z-index: 2;
+  color: var(--text-muted);
+  font-family: var(--font-pixel);
+  font-size: 0.54rem;
+  letter-spacing: 0.08em;
+}
+
+.sigil {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  display: grid;
+  width: clamp(72px, 11vw, 102px);
+  height: clamp(72px, 11vw, 102px);
+  place-items: center;
+  border: 1px solid var(--line-strong);
+  background: color-mix(in srgb, var(--bg) 38%, transparent);
+  box-shadow:
+    0 0 0 8px color-mix(in srgb, var(--bg) 31%, transparent),
+    0 0 52px color-mix(in srgb, var(--accent) 24%, transparent);
+  color: var(--accent);
+  transform: translate(-50%, -50%);
+  transition:
+    transform var(--transition-slow),
+    box-shadow var(--transition-slow);
+  backdrop-filter: blur(2px);
+}
+
+.sigil::before,
+.sigil::after {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-color: var(--accent-secondary);
+  content: '';
+}
+
+.sigil::before {
+  top: -3px;
+  left: -3px;
+  border-top: 1px solid;
+  border-left: 1px solid;
+}
+
+.sigil::after {
+  right: -3px;
+  bottom: -3px;
+  border-right: 1px solid;
+  border-bottom: 1px solid;
+}
+
+.sigil svg {
+  width: 45%;
+  height: 45%;
+  filter: drop-shadow(0 0 16px currentColor);
+}
+
+.card:hover .sigil {
+  box-shadow:
+    0 0 0 10px color-mix(in srgb, var(--bg) 27%, transparent),
+    0 0 74px color-mix(in srgb, var(--accent) 42%, transparent);
+  transform: translate(-50%, -50%) scale(1.06) rotate(2deg);
+}
+
+.previewLabel {
+  position: absolute;
+  right: 16px;
+  bottom: 13px;
+  z-index: 2;
+  color: var(--text-muted);
+  font-family: var(--font-pixel);
+  font-size: 0.5rem;
+  letter-spacing: 0.08em;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  min-height: 220px;
+  padding: 22px 22px 20px;
+}
+
+.topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.arrow {
+  color: var(--text-muted);
+  font-family: var(--font-pixel);
+  font-size: 0.8rem;
+  transition:
+    color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.card:hover .arrow {
+  color: var(--accent);
+  transform: translate(3px, -3px);
+}
+
+.title {
+  margin-top: 22px;
+  font-family: var(--font-pixel);
+  font-size: clamp(0.88rem, 1.6vw, 1.08rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.4;
+  text-wrap: balance;
+}
+
+.note {
+  margin-top: 12px;
+  color: var(--text-muted);
+  font-size: 0.86rem;
+  line-height: 1.65;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 24px;
+  color: var(--accent);
+  font-family: var(--font-pixel);
+  font-size: 0.56rem;
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.cta span {
+  transition: transform var(--transition-fast);
+}
+
+.card:hover .cta span {
+  transform: translateX(4px);
+}
+
+@media (max-width: 560px) {
+  .body {
+    min-height: 0;
+    padding: 18px;
+  }
+
+  .title {
+    margin-top: 18px;
+  }
+
+  .cta {
+    padding-top: 20px;
+  }
+}

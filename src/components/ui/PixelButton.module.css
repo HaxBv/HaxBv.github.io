@@ -1,0 +1,83 @@
+.button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 44px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  padding: 11px 18px;
+  font-family: var(--font-pixel);
+  font-size: 0.62rem;
+  letter-spacing: 0.04em;
+  line-height: 1.4;
+  text-align: center;
+  text-transform: uppercase;
+  transition:
+    transform var(--transition-fast),
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.button::after {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 4px;
+  height: 4px;
+  background: currentColor;
+  content: '';
+  opacity: 0.55;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+}
+
+.button:active {
+  transform: translateY(1px);
+}
+
+.primary {
+  background: var(--accent);
+  box-shadow: 0 5px 0 color-mix(in srgb, var(--accent) 45%, #000);
+  color: var(--bg);
+}
+
+.primary:hover {
+  background: color-mix(in srgb, var(--accent) 88%, white);
+  box-shadow:
+    0 7px 0 color-mix(in srgb, var(--accent) 45%, #000),
+    0 0 28px var(--glow);
+}
+
+.secondary {
+  border-color: var(--line-strong);
+  background: color-mix(in srgb, var(--surface) 72%, transparent);
+  box-shadow: 0 5px 0 color-mix(in srgb, var(--bg) 60%, #000);
+  color: var(--text);
+}
+
+.secondary:hover {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 12%, var(--surface));
+  box-shadow:
+    0 7px 0 color-mix(in srgb, var(--bg) 60%, #000),
+    0 0 24px var(--glow);
+}
+
+.ghost {
+  padding-inline: 4px;
+  color: var(--accent);
+}
+
+.ghost:hover {
+  color: var(--accent-secondary);
+}
+
+.ghost::after {
+  display: none;
+}

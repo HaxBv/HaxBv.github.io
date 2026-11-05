@@ -1,0 +1,230 @@
+.backdrop {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background: var(--bg);
+  isolation: isolate;
+  transition: background-color var(--transition-slow);
+}
+
+.backdrop::before {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 52px 52px;
+  content: '';
+  mask-image: linear-gradient(to bottom, black, transparent 78%);
+  opacity: 0.22;
+}
+
+.page {
+  position: fixed;
+  z-index: 0;
+  animation: backdrop-in 700ms ease both;
+}
+
+.compact {
+  z-index: 0;
+}
+
+.gradient,
+.image {
+  position: absolute;
+  inset: 0;
+}
+
+.gradient {
+  background: var(--backdrop-gradient);
+  transition: background 700ms ease;
+}
+
+.image {
+  background-image: var(--backdrop-image);
+  background-position: center;
+  background-size: cover;
+  mix-blend-mode: soft-light;
+  opacity: 0.35;
+}
+
+.effect {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.scanlines {
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 3px,
+    color-mix(in srgb, var(--text) 6%, transparent) 3px,
+    color-mix(in srgb, var(--text) 6%, transparent) 4px
+  );
+  mix-blend-mode: overlay;
+  opacity: 0.3;
+}
+
+.vignette {
+  background: radial-gradient(circle at 50% 42%, transparent 30%, color-mix(in srgb, var(--bg) 72%, transparent) 82%);
+}
+
+.embers::before,
+.embers::after {
+  position: absolute;
+  inset: -15%;
+  background-image:
+    radial-gradient(circle, var(--accent) 0 2px, transparent 2.5px),
+    radial-gradient(circle, var(--accent-secondary) 0 1.5px, transparent 2px);
+  background-position:
+    12% 88%,
+    72% 64%;
+  background-size:
+    180px 220px,
+    240px 280px;
+  content: '';
+  opacity: 0.45;
+}
+
+.embers::before {
+  animation: ember-rise 16s linear infinite;
+}
+
+.embers::after {
+  animation: ember-rise 23s linear infinite reverse;
+  opacity: 0.25;
+}
+
+.confetti::before,
+.confetti::after {
+  position: absolute;
+  inset: -12%;
+  background-image:
+    radial-gradient(circle, var(--accent-secondary) 0 2.5px, transparent 3px),
+    radial-gradient(circle, var(--accent) 0 2px, transparent 2.6px);
+  background-position:
+    18% 10%,
+    82% 40%;
+  background-size:
+    160px 190px,
+    210px 240px;
+  content: '';
+  opacity: 0.35;
+}
+
+.confetti::before {
+  animation: confetti-fall 24s linear infinite;
+}
+
+.confetti::after {
+  animation: confetti-fall 31s linear infinite reverse;
+  opacity: 0.22;
+}
+
+.arcane::before,
+.arcane::after {
+  position: absolute;
+  border: 1px solid color-mix(in srgb, var(--accent) 34%, transparent);
+  border-radius: 50%;
+  content: '';
+  opacity: 0.4;
+}
+
+.arcane::before {
+  top: 6%;
+  right: -8%;
+  width: 44vw;
+  height: 44vw;
+  box-shadow:
+    0 0 0 12px color-mix(in srgb, var(--accent) 5%, transparent),
+    0 0 80px color-mix(in srgb, var(--accent) 18%, transparent);
+  animation: arcane-pulse 8s ease-in-out infinite;
+}
+
+.arcane::after {
+  bottom: -20%;
+  left: -10%;
+  width: 36vw;
+  height: 36vw;
+  border-color: color-mix(in srgb, var(--accent-secondary) 28%, transparent);
+  animation: arcane-pulse 11s ease-in-out infinite reverse;
+}
+
+.decorations {
+  position: absolute;
+  inset: 0;
+}
+
+.decoration {
+  position: absolute;
+  animation: pixel-drift 7s ease-in-out infinite;
+  animation-delay: var(--sprite-delay, 0s);
+  filter: drop-shadow(0 0 14px color-mix(in srgb, currentColor 46%, transparent));
+  transform-origin: center;
+}
+
+.toneAccent {
+  color: var(--accent);
+}
+
+.toneSecondary {
+  color: var(--accent-secondary);
+}
+
+.toneText {
+  color: var(--text);
+}
+
+.compact .scanlines,
+.compact .vignette {
+  opacity: 0.18;
+}
+
+.compact .decoration {
+  filter: drop-shadow(0 0 8px color-mix(in srgb, currentColor 38%, transparent));
+}
+
+@keyframes backdrop-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes ember-rise {
+  from {
+    transform: translate3d(0, 20%, 0);
+  }
+
+  to {
+    transform: translate3d(3%, -24%, 0);
+  }
+}
+
+@keyframes confetti-fall {
+  from {
+    transform: translate3d(0, -16%, 0);
+  }
+
+  to {
+    transform: translate3d(2%, 18%, 0);
+  }
+}
+
+@keyframes arcane-pulse {
+  0%,
+  100% {
+    opacity: 0.24;
+    transform: scale(0.96);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: scale(1.03);
+  }
+}

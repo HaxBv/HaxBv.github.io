@@ -1,0 +1,245 @@
+.inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(300px, 0.92fr);
+  gap: clamp(44px, 7vw, 90px);
+  align-items: center;
+}
+
+.paragraphs {
+  display: grid;
+  gap: 16px;
+  max-width: 620px;
+  margin-top: 28px;
+}
+
+.paragraphs p {
+  color: var(--text-muted);
+  font-size: 0.99rem;
+  line-height: 1.8;
+}
+
+.note {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 26px;
+  border-left: 2px solid var(--accent-secondary);
+  padding-left: 12px;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  line-height: 1.6;
+}
+
+.noteDot {
+  flex: 0 0 auto;
+  width: 6px;
+  height: 6px;
+  margin-top: 8px;
+  background: var(--accent-secondary);
+}
+
+.cardWrap {
+  position: relative;
+  width: min(100%, 440px);
+  margin-inline: auto;
+}
+
+.card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--line-strong);
+  background:
+    linear-gradient(150deg, color-mix(in srgb, var(--accent) 9%, transparent), transparent 50%),
+    var(--surface);
+  box-shadow:
+    var(--shadow-soft),
+    inset 0 0 0 5px color-mix(in srgb, var(--bg) 32%, transparent);
+  padding: 16px;
+  transform: rotate(-1.2deg);
+  transition:
+    transform var(--transition-slow),
+    border-color var(--transition-slow);
+}
+
+.cardWrap:hover .card {
+  border-color: var(--accent);
+  transform: rotate(0deg) translateY(-4px);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 12px;
+  color: var(--text-muted);
+  font-family: var(--font-pixel);
+  font-size: 0.52rem;
+  letter-spacing: 0.06em;
+  line-height: 1.5;
+}
+
+.cardHeader span:last-child {
+  color: var(--accent-secondary);
+}
+
+.avatar {
+  position: relative;
+  display: grid;
+  height: 210px;
+  margin-top: 14px;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px),
+    radial-gradient(circle at center, color-mix(in srgb, var(--accent) 16%, transparent), transparent 58%),
+    var(--bg);
+  background-size:
+    26px 26px,
+    26px 26px,
+    auto,
+    auto;
+}
+
+.avatarHalo {
+  position: absolute;
+  width: 110px;
+  height: 110px;
+  border: 1px solid color-mix(in srgb, var(--accent-secondary) 48%, transparent);
+  transform: rotate(45deg);
+  animation: float-soft 7s ease-in-out infinite;
+}
+
+.avatarHalo::before,
+.avatarHalo::after {
+  position: absolute;
+  border: 1px solid color-mix(in srgb, var(--accent) 32%, transparent);
+  content: '';
+}
+
+.avatarHalo::before {
+  inset: 12px;
+}
+
+.avatarHalo::after {
+  inset: 28px;
+}
+
+.avatarSprite {
+  position: relative;
+  z-index: 2;
+  width: 64px;
+  height: 64px;
+  color: var(--accent);
+  filter: drop-shadow(0 0 24px var(--glow-strong));
+}
+
+.avatarLabel {
+  position: absolute;
+  right: 12px;
+  bottom: 10px;
+  color: var(--accent-secondary);
+  font-family: var(--font-pixel);
+  font-size: 0.5rem;
+  letter-spacing: 0.06em;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  margin: 14px 0 0;
+  background: var(--line);
+}
+
+.stats div {
+  background: color-mix(in srgb, var(--bg) 46%, var(--surface));
+  padding: 10px 12px;
+}
+
+.stats dt {
+  color: var(--text-muted);
+  font-family: var(--font-pixel);
+  font-size: 0.5rem;
+  letter-spacing: 0.06em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.stats dd {
+  margin: 3px 0 0;
+  font-family: var(--font-pixel);
+  font-size: 0.6rem;
+  line-height: 1.5;
+}
+
+.quest {
+  margin-top: 14px;
+  border: 1px solid var(--line);
+  padding: 12px;
+}
+
+.quest > span {
+  display: block;
+  color: var(--text-muted);
+  font-family: var(--font-pixel);
+  font-size: 0.5rem;
+  letter-spacing: 0.07em;
+  line-height: 1.5;
+}
+
+.quest strong {
+  display: block;
+  margin-top: 5px;
+  font-family: var(--font-pixel);
+  font-size: 0.6rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.questBar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+  margin-top: 12px;
+}
+
+.questBar span {
+  height: 6px;
+  background: var(--accent-secondary);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--accent-secondary) 30%, transparent);
+}
+
+.questBar .questBarIdle {
+  background: color-mix(in srgb, var(--text-muted) 24%, transparent);
+  box-shadow: none;
+}
+
+.floating {
+  position: absolute;
+  top: -16px;
+  right: 18px;
+  width: 26px;
+  height: 26px;
+  color: var(--accent-secondary);
+  filter: drop-shadow(0 0 16px currentColor);
+  animation: float-soft 5s ease-in-out infinite;
+}
+
+@media (max-width: 900px) {
+  .inner {
+    grid-template-columns: 1fr;
+  }
+
+  .cardWrap {
+    width: min(100%, 460px);
+  }
+}
+
+@media (max-width: 480px) {
+  .stats {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,123 @@
+.notFound {
+  min-height: calc(100vh - var(--nav-height));
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 0.7fr);
+  gap: clamp(40px, 7vw, 90px);
+  align-items: center;
+}
+
+.copy h1 {
+  max-width: 720px;
+  margin-top: 18px;
+  font-family: var(--font-pixel);
+  font-size: clamp(1.6rem, 4vw, 3.2rem);
+  line-height: 1.2;
+  text-wrap: balance;
+}
+
+.code {
+  margin-top: 26px;
+  color: var(--accent);
+  font-family: var(--font-pixel);
+  font-size: clamp(4rem, 12vw, 9rem);
+  letter-spacing: -0.08em;
+  line-height: 0.9;
+  text-shadow: 0 0 60px var(--glow);
+}
+
+.body {
+  max-width: 560px;
+  margin-top: 22px;
+  color: var(--text-muted);
+  font-size: 0.98rem;
+  line-height: 1.75;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.visual {
+  position: relative;
+  display: grid;
+  aspect-ratio: 1;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid var(--line-strong);
+  background: color-mix(in srgb, var(--surface) 46%, transparent);
+}
+
+.visual::before {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 28px 28px;
+  content: '';
+  opacity: 0.5;
+}
+
+.rings {
+  position: absolute;
+  width: 60%;
+  height: 60%;
+  border: 1px solid color-mix(in srgb, var(--accent) 46%, transparent);
+  transform: rotate(45deg);
+  animation: float-soft 7s ease-in-out infinite;
+}
+
+.rings::before,
+.rings::after {
+  position: absolute;
+  border: 1px solid color-mix(in srgb, var(--accent-secondary) 32%, transparent);
+  content: '';
+}
+
+.rings::before {
+  inset: 14%;
+}
+
+.rings::after {
+  inset: 30%;
+}
+
+.sprite {
+  position: relative;
+  z-index: 2;
+  width: 56px;
+  height: 56px;
+  color: var(--accent);
+  filter: drop-shadow(0 0 26px var(--glow-strong));
+}
+
+.visualLabel {
+  position: absolute;
+  bottom: 14px;
+  left: 14px;
+  color: var(--text-muted);
+  font-family: var(--font-pixel);
+  font-size: 0.5rem;
+  letter-spacing: 0.08em;
+}
+
+@media (max-width: 780px) {
+  .inner {
+    grid-template-columns: 1fr;
+  }
+
+  .visual {
+    width: min(100%, 360px);
+  }
+
+  .actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+}

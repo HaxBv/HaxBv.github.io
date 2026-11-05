@@ -1,0 +1,87 @@
+.footer {
+  position: relative;
+  z-index: 2;
+  border-top: 1px solid var(--line);
+  background: color-mix(in srgb, var(--bg) 86%, transparent);
+  transition:
+    background-color var(--transition-slow),
+    border-color var(--transition-slow);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  padding-block: 30px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.mark {
+  width: 24px;
+  height: 24px;
+  color: var(--accent);
+}
+
+.name {
+  font-family: var(--font-pixel);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.note {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  color: var(--text-muted);
+  font-family: var(--font-pixel);
+  font-size: 0.54rem;
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.topButton {
+  border: 0;
+  padding: 4px 0;
+  background: transparent;
+  color: var(--accent);
+  font-family: inherit;
+  font-size: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  cursor: pointer;
+  transition: color var(--transition-fast);
+}
+
+.topButton:hover {
+  color: var(--accent-secondary);
+}
+
+@media (max-width: 720px) {
+  .inner {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .meta {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+  }
+}

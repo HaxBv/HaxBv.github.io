@@ -1,0 +1,66 @@
+.appShell {
+  position: relative;
+  min-height: 100vh;
+  isolation: isolate;
+  background: var(--bg);
+  color: var(--text);
+  transition:
+    background-color var(--transition-slow),
+    color var(--transition-slow);
+}
+
+.ambient {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: var(--backdrop-gradient);
+  transition: background 700ms ease;
+}
+
+.ambient::before {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 64px 64px;
+  content: '';
+  mask-image: radial-gradient(circle at 50% 30%, black, transparent 72%);
+  opacity: 0.2;
+}
+
+.skipLink {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 200;
+  border: 1px solid var(--accent);
+  padding: 9px 13px;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-pixel);
+  font-size: 0.5rem;
+  line-height: 1.5;
+  text-transform: uppercase;
+  transform: translateY(-160%);
+  transition: transform var(--transition-fast);
+}
+
+.skipLink:focus {
+  transform: translateY(0);
+}
+
+.main {
+  position: relative;
+  z-index: 2;
+  min-height: 60vh;
+}
+
+.main:focus {
+  outline: none;
+}
+
+.routeFrame {
+  animation: route-in 420ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}

@@ -1,0 +1,232 @@
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  padding-block: 6px;
+  color: var(--text-muted);
+  font-family: var(--font-pixel);
+  font-size: 0.54rem;
+  letter-spacing: 0.04em;
+  line-height: 1.6;
+  text-transform: uppercase;
+}
+
+.breadcrumb a {
+  color: var(--text-muted);
+  transition: color var(--transition-fast);
+}
+
+.breadcrumb a:hover {
+  color: var(--accent);
+}
+
+.breadcrumb span[aria-current='page'] {
+  color: var(--text);
+}
+
+.header {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(290px, 0.9fr);
+  gap: clamp(36px, 6vw, 74px);
+  align-items: end;
+  padding-block: clamp(46px, 7vw, 86px) clamp(52px, 7vw, 86px);
+  border-bottom: 1px solid var(--line);
+}
+
+.copy {
+  min-width: 0;
+}
+
+.title {
+  max-width: 920px;
+  margin-top: 20px;
+  font-family: var(--font-pixel);
+  font-size: clamp(2.2rem, 6vw, 5.2rem);
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  line-height: 1.05;
+  text-wrap: balance;
+  text-shadow: 0 0 80px color-mix(in srgb, var(--accent) 16%, transparent);
+}
+
+.statusRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: 28px;
+}
+
+.modeChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 6px 10px;
+  background: color-mix(in srgb, var(--surface) 58%, transparent);
+  color: var(--text-muted);
+  font-family: var(--font-pixel);
+  font-size: 0.5rem;
+  letter-spacing: 0.04em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.modeChip::before {
+  width: 7px;
+  height: 7px;
+  background: var(--accent);
+  box-shadow: 0 0 10px var(--accent);
+  content: '';
+}
+
+.note {
+  max-width: 620px;
+  margin-top: 24px;
+  color: var(--text-muted);
+  font-size: 0.98rem;
+  line-height: 1.75;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+.signature {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--line-strong);
+  background:
+    linear-gradient(145deg, color-mix(in srgb, var(--accent) 12%, transparent), transparent 52%),
+    color-mix(in srgb, var(--surface) 74%, transparent);
+  box-shadow:
+    var(--shadow-soft),
+    inset 0 0 0 5px color-mix(in srgb, var(--bg) 30%, transparent);
+  padding: 16px;
+  transform: rotate(1deg);
+  transition:
+    transform var(--transition-slow),
+    border-color var(--transition-slow);
+}
+
+.signature:hover {
+  border-color: var(--accent);
+  transform: rotate(0deg) translateY(-4px);
+}
+
+.signatureHeader {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 11px;
+  color: var(--text-muted);
+  font-family: var(--font-pixel);
+  font-size: 0.52rem;
+  letter-spacing: 0.06em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.signatureHeader span:last-child {
+  color: var(--accent-secondary);
+}
+
+.motif {
+  display: grid;
+  height: 148px;
+  margin-top: 14px;
+  place-items: center;
+  border: 1px solid var(--line);
+  background:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px),
+    radial-gradient(circle at center, color-mix(in srgb, var(--accent) 18%, transparent), transparent 58%),
+    var(--bg);
+  background-size:
+    26px 26px,
+    26px 26px,
+    auto,
+    auto;
+}
+
+.motif svg {
+  width: 54px;
+  height: 54px;
+  color: var(--accent);
+  filter: drop-shadow(0 0 24px var(--glow-strong));
+  animation: float-soft 6s ease-in-out infinite;
+}
+
+.palette {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.swatch {
+  display: block;
+  height: 30px;
+  border: 1px solid var(--line);
+}
+
+.swatchLabel {
+  display: block;
+  margin-top: 6px;
+  overflow: hidden;
+  color: var(--text-muted);
+  font-family: var(--font-pixel);
+  font-size: 0.5rem;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.effects {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 14px;
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
+}
+
+.effects span {
+  border: 1px solid var(--line);
+  padding: 4px 7px;
+  color: var(--text-muted);
+  font-family: var(--font-pixel);
+  font-size: 0.5rem;
+  letter-spacing: 0.04em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+@media (max-width: 900px) {
+  .header {
+    grid-template-columns: 1fr;
+  }
+
+  .signature {
+    width: min(100%, 460px);
+  }
+}
+
+@media (max-width: 560px) {
+  .actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .palette {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
